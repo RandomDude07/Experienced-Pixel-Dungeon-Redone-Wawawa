@@ -59,9 +59,12 @@ public class IdealBag extends TreasureBag {
         int amount = Random.Int(0, 15)*10;
         if (Dungeon.hero.perks.contains(Perks.Perk.MORE_BAG)) amount *= 1.5f;
         for(int i = 0; i < amount; i++) {
-            if (Dungeon.Float(1) <= 0.045f){
+            if (Dungeon.Float(1) <= 0.60f){
                 Item gift = null;
-                switch (Random.Int(9)){
+                if (Dungeon.Float(1) <= 0.25f) { 
+                gift = new RingOfElements();
+            } else {
+                switch (Random.Int(8)){
                     case 0: case 1:
                         gift = new Plutonium(); break;
                     case 2: case 3:
@@ -70,8 +73,6 @@ public class IdealBag extends TreasureBag {
                         gift = new BrokenEnderiumBlade(); break;
                     case 6: case 7:
                         gift = new EnergyBottle(); break;
-                    case 9:
-                        gift = new RingOfElements(); break;
                 }
                 items.add(gift);
             } else {
